@@ -1,6 +1,6 @@
 
 import java.util.*;
-import java.lang.Math;
+import java.lang.*;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -21,7 +21,7 @@ public class pencil {
         int[] digit = new int[100];
         int length = 0;
         public void add(BigInteger other) {
-            int len = max(length, other.length);
+            int len = Math.max(length, other.length);
         }
         public void multiply(BigInteger other) {
             BigInteger ret = new BigInteger();
