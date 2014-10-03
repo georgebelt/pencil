@@ -20,7 +20,7 @@ public class pencil {
     public static class BigInteger {
         public int[] digit = new int[100];
         public int length = 0;
-
+        
         public BigInteger() {
             Arrays.fill(digit, 0);
             length = 0;
@@ -49,7 +49,23 @@ public class pencil {
         }
         
         public void multiply(BigInteger other) {
-            
+            BigInteger[] multiplies = new BigInteger[10];
+            multiplies[0] = new BigInteger();
+            for (int i = 1; i <= 9; i++) {
+                multiplies[i] = new BigInteger();
+                multiplies[i].add(multiplies[i-1]);
+                multiplies[i].add(this);
+            }
+            Arrays.fill(this.digit, 0);
+            this.length = 0;
+            for (int i = 0; i < other.length; i++) {
+                BigInteger addition = new BigInteger();
+                addition.length = i + multiplies[other.digit[i]].length;
+                for (int j = i; j < addition.length; j++) {
+                    addition.digit[j] = multiplies[other.digit[i]].digit[j - i];
+                }
+                this.add(addition);
+            }
         }
         
         public void print() {
@@ -61,15 +77,11 @@ public class pencil {
     }
     
     public static void main(String[] args) {
-        int n = 1;
+        BigInteger bi = new BigInteger("1");
         Scanner stdin = new Scanner(System.in);
         while (stdin.hasNextLine()) {
-            BigInteger a = new BigInteger(stdin.nextLine());
-            BigInteger b = new BigInteger(stdin.nextLine());
-            a.add(b);
-            a.print();
+            bi.multiply(new BigInteger(stdin.nextLine()));
         }
-        System.out.println(n);
+        bi.print();
     }
-    
 }
