@@ -18,7 +18,7 @@ public class pencil {
      * @param args the command line arguments
      */
     public static class BigInteger {
-        public int[] digit = new int[10000];
+        public int[] digit = new int[20000];
         public int length = 0;
         
         public BigInteger() {
