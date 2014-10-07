@@ -81,6 +81,7 @@ public class pencil {
         Scanner stdin = new Scanner(System.in);
         while (stdin.hasNextLine()) {
             bi.multiply(new BigInteger(stdin.nextLine()));
+            //bi.print();
         }
         bi.print();
     }
